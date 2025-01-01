@@ -4,6 +4,7 @@ import numpy as np
 
 from pydantic import BaseModel
 from sklearn.datasets import load_iris
+from huggingface_hub import login as hf_login
 from huggingface_hub import snapshot_download
 from fastapi import FastAPI, HTTPException
 
@@ -11,9 +12,11 @@ from fastapi import FastAPI, HTTPException
 
 from dev.model import IrisModel
 
+
 # while deploying on fly.io, we don't need to load the .env file
 # Load environment variables from .env file
 # load_dotenv()
+hf_login(token=os.getenv("HF_TOKEN"))
 
 # Get the repo_id from environment variable
 REPO_ID = os.getenv("HUGGINGFACE_MODEL_REPO")
