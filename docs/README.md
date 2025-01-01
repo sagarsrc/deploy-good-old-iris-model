@@ -76,15 +76,15 @@ sudo docker run -d -p 8000:8000 iris
 
 same curl requests as above
 
-# deployment fly.io
+# Deployment on Fly.io
 
 ## CPU version
 
-flyctl launch --dockerfile ./Dockerfile.cpu --config ./cpu.fly.toml
+flyctl deploy --remote-only --config cpu.fly.toml --dockerfile ./Dockerfile.cpu
 
 ## GPU version
 
-flyctl launch --dockerfile ./Dockerfile.gpu --config ./gpu.fly.toml
+flyctl deploy --remote-only --config gpu.fly.toml --dockerfile ./Dockerfile.gpu
 
 ## curls
 
@@ -129,3 +129,16 @@ Expected output
 1. [Fly.io Resource Pricing](https://fly.io/docs/about/pricing/#machines)
 2. [Fly.io Continuous Deployment with Github Actions](https://fly.io/docs/launch/continuous-deployment-with-github-actions/)
 3. [Fly.io GPU Quickstart](https://fly.io/docs/gpus/gpu-quickstart/)
+
+# NOTE
+
+1. While using GPU, I got the following error:
+
+   ```
+    ✖ Failed: error creating a new machine: failed to launch VM: Your organization is not allowed to use GPU machines. Please contact billing@fly.io
+    Please contact billing@fly.io (Request ID: 01JGHZ65QWG5FNV757MFYJTBQ7-iad) (Trace ID: 7c92684e1b16fd263ee75b2b5b34e7e9)
+   ```
+
+   based on [forum conversation](https://community.fly.io/t/your-organization-is-not-allowed-to-use-gpu-machines/19166) manually reviewing of accounts is required.
+
+2. CICD for both CPU and GPU versions is working, except for GPU final spawning of machine fails due to fly.io restrictions.
