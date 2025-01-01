@@ -16,3 +16,7 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HUGGINGFACE_MODEL_REPO: ${{ secrets.HUGGINGFACE_MODEL_REPO }}
+
+          name: Deploy to Fly on push to main

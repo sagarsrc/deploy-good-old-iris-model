@@ -18,7 +18,7 @@ python dev.model.py > ./local_artifacts/train_log.txt 2>&1
 python dev.inference.py > ./local_artifacts/inference_log.txt 2>&1
 ```
 
-# testing server
+# testing local server
 
 ## start server
 
@@ -26,7 +26,7 @@ python dev.inference.py > ./local_artifacts/inference_log.txt 2>&1
 uvicorn serve.inference_api:app --reload
 ```
 
-## test curl requests
+## test local curl requests to fastapi server
 
 Example 1 - Likely Setosa
 
@@ -74,6 +74,8 @@ sudo docker build -t iris .
 sudo docker run -d -p 8000:8000 iris
 ```
 
+same curl requests as above
+
 # deployment fly.io
 
 API health check
@@ -111,3 +113,9 @@ Expected output
 ```bash
 {"predicted_class":2,"predicted_class_name":"virginica","confidence":0.54,"probabilities":{"setosa":0.1,"versicolor":0.36,"virginica":0.54}}
 ```
+
+# Todo
+
+1. use GPU machine
+2. setup CI/CD pipeline
+3. setup env variables secrets
