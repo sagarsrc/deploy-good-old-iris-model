@@ -30,7 +30,7 @@ uvicorn serve.inference_api:app --reload
 
 ### Sample API Requests
 
-1. Predict Setosa
+Predict Setosa
 
 ```bash
 curl -X POST "http://localhost:8000/predict" \
@@ -40,32 +40,6 @@ curl -X POST "http://localhost:8000/predict" \
     "sepal_width": 3.5,
     "petal_length": 1.4,
     "petal_width": 0.2
-}'
-```
-
-2. Predict Versicolor
-
-```bash
-curl -X POST "http://localhost:8000/predict" \
--H "Content-Type: application/json" \
--d '{
-    "sepal_length": 6.4,
-    "sepal_width": 2.9,
-    "petal_length": 4.3,
-    "petal_width": 1.3
-}'
-```
-
-3. Predict Virginica
-
-```bash
-curl -X POST "http://localhost:8000/predict" \
--H "Content-Type: application/json" \
--d '{
-    "sepal_length": 7.7,
-    "sepal_width": 3.8,
-    "petal_length": 6.7,
-    "petal_width": 2.2
 }'
 ```
 
@@ -111,6 +85,8 @@ Expected Response:
 
 Model Inference:
 
+1. Predict Versicolor
+
 ```bash
 curl -X POST "https://good-old-iris-model.fly.dev/predict" \
 -H "Content-Type: application/json" \
@@ -122,7 +98,20 @@ curl -X POST "https://good-old-iris-model.fly.dev/predict" \
 }'
 ```
 
-Expected Response:
+2. Predict Virginica
+
+```bash
+curl -X POST "https://good-old-iris-model.fly.dev/predict" \
+-H "Content-Type: application/json" \
+-d '{
+    "sepal_length": 7.7,
+    "sepal_width": 3.8,
+    "petal_length": 6.7,
+    "petal_width": 2.2
+}'
+```
+
+Expected Response example:
 
 ```json
 {
