@@ -11,7 +11,7 @@ jobs:
   deploy:
     name: Deploy CPU app
     runs-on: ubuntu-latest
-    concurrency: deploy-group
+    concurrency: deploy-group-cpu
     steps:
       - uses: actions/checkout@v3
         with:

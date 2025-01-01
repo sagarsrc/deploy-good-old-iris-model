@@ -11,7 +11,7 @@ jobs:
   deploy:
     name: Deploy GPU app
     runs-on: ubuntu-latest
-    concurrency: deploy-group
+    concurrency: deploy-group-gpu
     steps:
       - uses: actions/checkout@v3
         with:
