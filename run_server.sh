@@ -1,3 +1,3 @@
 #!/bin/bash
-# source ./.env
-uvicorn serve.simple:app --host 0.0.0.0 --port 8000
+echo $HF_TOKEN
+uvicorn serve.simple:app --host 0.0.0.0 --port "${PORT:-8000}"

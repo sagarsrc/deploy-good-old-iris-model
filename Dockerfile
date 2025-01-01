@@ -22,5 +22,8 @@ RUN chmod +x run_server.sh
 # Expose the port the app runs on
 EXPOSE 8000
 
+# Set environment variable for the port
+ENV PORT=8000
+
 # Command to run the FastAPI app
 CMD ["./run_server.sh"]
