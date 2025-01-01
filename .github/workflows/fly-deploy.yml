@@ -21,10 +21,10 @@ jobs:
       # Set Fly secrets
       - name: Set Fly secrets
         run: |
-          echo "HF_TOKEN: ${HF_TOKEN}"
-          echo "HUGGINGFACE_MODEL_REPO: ${HUGGINGFACE_MODEL_REPO}"
-          flyctl secrets set --stage --app "good-old-iris-model" "HF_TOKEN=${HF_TOKEN}"
-          flyctl secrets set --stage --app "good-old-iris-model" "HUGGINGFACE_MODEL_REPO=${HUGGINGFACE_MODEL_REPO}"
+          echo "HF_TOKEN: ${{ secrets.HF_TOKEN }}"
+          echo "HUGGINGFACE_MODEL_REPO: ${{ secrets.HUGGINGFACE_MODEL_REPO }}"
+          flyctl secrets set --stage --app "good-old-iris-model" "HF_TOKEN=${{ secrets.HF_TOKEN }}"
+          flyctl secrets set --stage --app "good-old-iris-model" "HUGGINGFACE_MODEL_REPO=${{ secrets.HUGGINGFACE_MODEL_REPO }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_IO_DEPLOY_TOKEN }}
 
