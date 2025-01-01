@@ -19,10 +19,11 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
       # Set Fly secrets
+      # check if the secrets are set
+      # echo "HF_TOKEN: $# {{ secrets.HF_TOKEN }}"
+      # echo "HUGGINGFACE_MODEL_REPO: $# {{ secrets.HUGGINGFACE_MODEL_REPO }}"
       - name: Set Fly secrets
         run: |
-          echo "HF_TOKEN: ${{ secrets.HF_TOKEN }}"
-          echo "HUGGINGFACE_MODEL_REPO: ${{ secrets.HUGGINGFACE_MODEL_REPO }}"
           flyctl secrets set --stage --app "good-old-iris-model" "HF_TOKEN=${{ secrets.HF_TOKEN }}"
           flyctl secrets set --stage --app "good-old-iris-model" "HUGGINGFACE_MODEL_REPO=${{ secrets.HUGGINGFACE_MODEL_REPO }}"
         env:

@@ -1,4 +1,6 @@
-app = 'good-old-iris-model'
+# GPU version of fly.toml
+
+app = 'gpu-good-old-iris-model'
 primary_region = "ord"
 
 [build]
@@ -18,9 +20,7 @@ soft_limit = 500
 
 [[vm]]
 vm.size = "l40s"
-# memory = '4gb'
-# cpu_kind = 'performance'
-# cpus = 4
+
 
 # Add health check endpoint
 [metrics]
