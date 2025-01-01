@@ -24,7 +24,7 @@ REPO_ID = os.getenv("HUGGINGFACE_MODEL_REPO")
 # Create a directory to fetch artifacts
 FETCHED_ARTIFACTS_PATH = "./fetched_artifacts"
 os.makedirs(FETCHED_ARTIFACTS_PATH, exist_ok=True)
-
+"""
 # Download model and scaler from Hugging Face Hub
 snapshot_download(repo_id=REPO_ID, local_dir=FETCHED_ARTIFACTS_PATH)
 
@@ -35,7 +35,7 @@ SCALER_PATH = os.path.join(FETCHED_ARTIFACTS_PATH, "scaler.joblib")
 iris = load_iris()
 CLASS_NAMES = iris.target_names.tolist()
 MODEL = IrisModel.load(FETCHED_ARTIFACTS_PATH)  # Load model once at startup
-
+"""
 app = FastAPI()
 
 
@@ -57,6 +57,12 @@ def check_gpu():
     return {"is_gpu_available": available}
 
 
+@app.get("/is-hf-logged-in")
+def check_hf_login():
+    return {"is_hf_logged_in": os.getenv("HF_TOKEN") is not None}
+
+
+"""
 @app.post("/predict")
 def predict(features: InputFeatures):
     try:
@@ -90,7 +96,7 @@ def predict(features: InputFeatures):
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
-
+"""
 
 if __name__ == "__main__":
     import uvicorn
