@@ -78,6 +78,16 @@ same curl requests as above
 
 # deployment fly.io
 
+## CPU version
+
+flyctl launch --dockerfile ./Dockerfile.cpu --config ./cpu.fly.toml
+
+## GPU version
+
+flyctl launch --dockerfile ./Dockerfile.gpu --config ./gpu.fly.toml
+
+## curls
+
 API health check
 
 ```bash
@@ -113,10 +123,6 @@ Expected output
 ```bash
 {"predicted_class":2,"predicted_class_name":"virginica","confidence":0.54,"probabilities":{"setosa":0.1,"versicolor":0.36,"virginica":0.54}}
 ```
-
-# Todo
-
-1. use GPU machine
 
 # References
 
