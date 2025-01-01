@@ -85,20 +85,7 @@ Expected Response:
 
 Model Inference:
 
-1. Predict Versicolor
-
-```bash
-curl -X POST "https://good-old-iris-model.fly.dev/predict" \
--H "Content-Type: application/json" \
--d '{
-    "sepal_length": 6.4,
-    "sepal_width": 2.9,
-    "petal_length": 4.3,
-    "petal_width": 1.3
-}'
-```
-
-2. Predict Virginica
+Predict Virginica
 
 ```bash
 curl -X POST "https://good-old-iris-model.fly.dev/predict" \
@@ -108,6 +95,19 @@ curl -X POST "https://good-old-iris-model.fly.dev/predict" \
     "sepal_width": 3.8,
     "petal_length": 6.7,
     "petal_width": 2.2
+}'
+```
+
+Predict Setosa
+
+```bash
+curl -X POST "https://good-old-iris-model.fly.dev/predict" \
+-H "Content-Type: application/json" \
+-d '{
+    "sepal_length": 5.1,
+    "sepal_width": 3.5,
+    "petal_length": 1.4,
+    "petal_width": 0.2
 }'
 ```
 
