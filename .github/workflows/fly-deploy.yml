@@ -12,6 +12,8 @@ jobs:
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
       # Set Fly secrets
