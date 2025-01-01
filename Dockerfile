@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY dev dev
 COPY serve serve
 COPY run_server.sh .
-COPY .env .
+# COPY .env .
 
 
 # Expose the port the app runs on
