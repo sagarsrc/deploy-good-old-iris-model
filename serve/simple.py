@@ -10,11 +10,12 @@ def read_root():
     return {"message": "Hello, World!"}
 
 
-@app.get("/is-hf-logged-in")
+@app.get("/env")
 def check_hf_login():
     return {
         "env_hf_token": os.getenv("HF_TOKEN"),
         "env_hf_repo": os.getenv("HUGGINGFACE_MODEL_REPO"),
+        "env_fly_token": os.getenv("FLY_IO_DEPLOY_TOKEN", "")[:8],
     }
 
 
@@ -32,6 +33,9 @@ def check_gpu():
 
 if __name__ == "__main__":
     import uvicorn
+
+    print(os.getenv("HF_TOKEN"))
+    print(os.getenv("HUGGINGFACE_MODEL_REPO"))
 
     port = int(os.getenv("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
