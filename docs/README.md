@@ -117,3 +117,9 @@ Expected output
 # Todo
 
 1. use GPU machine
+
+# References
+
+1. [Fly.io Resource Pricing](https://fly.io/docs/about/pricing/#machines)
+2. [Fly.io Continuous Deployment with Github Actions](https://fly.io/docs/launch/continuous-deployment-with-github-actions/)
+3. [Fly.io GPU Quickstart](https://fly.io/docs/gpus/gpu-quickstart/)
