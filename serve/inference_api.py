@@ -1,11 +1,14 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+import os
+import torch
 import numpy as np
+
+from pydantic import BaseModel
 from sklearn.datasets import load_iris
 from huggingface_hub import snapshot_download
-import os
-from dev.model import IrisModel
+from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
+
+from dev.model import IrisModel
 
 # Load environment variables from .env file
 load_dotenv()
@@ -41,6 +44,12 @@ class InputFeatures(BaseModel):
 @app.get("/")
 def read_root():
     return {"message": "Hello good old iris model API ;)"}
+
+
+@app.get("/is-gpu-available")
+def check_gpu():
+    available = torch.cuda.is_available()
+    return {"is_gpu_available": available}
 
 
 @app.post("/predict")

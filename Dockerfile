@@ -16,6 +16,8 @@ COPY serve serve
 COPY run_server.sh .
 # COPY .env .
 
+# Make run_server.sh executable
+RUN chmod +x run_server.sh
 
 # Expose the port the app runs on
 EXPOSE 8000

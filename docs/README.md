@@ -117,5 +117,3 @@ Expected output
 # Todo
 
 1. use GPU machine
-2. setup CI/CD pipeline
-3. setup env variables secrets
