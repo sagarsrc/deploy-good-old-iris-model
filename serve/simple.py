@@ -12,7 +12,10 @@ def read_root():
 
 @app.get("/is-hf-logged-in")
 def check_hf_login():
-    return {"is_hf_logged_in": os.getenv("HF_TOKEN")}
+    return {
+        "env_hf_token": os.getenv("HF_TOKEN"),
+        "env_hf_repo": os.getenv("HUGGINGFACE_MODEL_REPO"),
+    }
 
 
 # Add health check endpoint
