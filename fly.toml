@@ -9,7 +9,7 @@ PORT = "8000"
 
 # VM configuration
 [[vm]]
-size = "shared-cpu-2x"
+size = "l40s"
 memory = "2gb"
 cpu_kind = "performance"
 cpus = 1
