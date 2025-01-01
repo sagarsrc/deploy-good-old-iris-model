@@ -44,5 +44,5 @@ jobs:
         run: flyctl deploy --remote-only --config fly.toml
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_IO_DEPLOY_TOKEN }}
-          # HF_TOKEN: $#{{ secrets.HF_TOKEN }}
-          # HUGGINGFACE_MODEL_REPO: $#{{ secrets.HUGGINGFACE_MODEL_REPO }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HUGGINGFACE_MODEL_REPO: ${{ secrets.HUGGINGFACE_MODEL_REPO }}
