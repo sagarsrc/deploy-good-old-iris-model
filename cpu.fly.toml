@@ -1,5 +1,5 @@
 app = 'good-old-iris-model'
-primary_region = "ord"
+primary_region = 'bom'
 
 [build]
 
@@ -17,10 +17,9 @@ hard_limit = 1000
 soft_limit = 500
 
 [[vm]]
-vm.size = "l40s"
-# memory = '4gb'
-# cpu_kind = 'performance'
-# cpus = 4
+memory = '2gb'
+cpu_kind = 'performance'
+cpus = 1
 
 # Add health check endpoint
 [metrics]
