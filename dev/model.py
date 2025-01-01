@@ -209,7 +209,8 @@ class IrisModel:
     def load(cls, path: str) -> "IrisModel":
         """Load a saved model."""
         # Load model state
-        model_state = torch.load(f"{path}/model.pth", weights_only=True)
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        model_state = torch.load(f"{path}/model.pth", map_location=device)
 
         # Reconstruct config
         config = ModelConfig(**model_state["config"])
@@ -219,6 +220,7 @@ class IrisModel:
 
         # Load model weights
         iris_model.model.load_state_dict(model_state["model_state_dict"])
+        iris_model.model.to(device)
 
         # Load scaler
         iris_model.scaler = joblib.load(f"{path}/scaler.joblib")

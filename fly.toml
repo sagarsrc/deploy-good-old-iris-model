@@ -1,6 +1,7 @@
 # fly.toml app configuration file for good-old-iris-model
 app = "good-old-iris-model"
-primary_region = "ord"
+# "ord" for gpus
+primary_region = "bom"
 kill_signal = "SIGINT"
 kill_timeout = "5s"
 
@@ -9,7 +10,9 @@ PORT = "8000"
 
 # VM configuration
 [[vm]]
-size = "l40s"
+# size = "a100-40gb" or "l40s" or "a100-80gb" for gpus
+
+size = "shared-cpu-2x"
 memory = "2gb"
 cpu_kind = "performance"
 cpus = 1
