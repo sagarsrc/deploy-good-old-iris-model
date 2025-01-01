@@ -13,10 +13,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+
+      # Set Fly secrets
+      - name: Set Fly secrets
+        run: |
+          flyctl secrets set --stage --app "good-old-iris-model" "HF_TOKEN=${HF_TOKEN}"
+          flyctl secrets set --stage --app "good-old-iris-model" "HUGGINGFACE_MODEL_REPO=${HUGGINGFACE_MODEL_REPO}"
+
+      # Check fly status
+      - name: Check fly status
+        run: |
+          flyctl status --app good-old-iris-model
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_IO_DEPLOY_TOKEN }}
+
+      # Deploy to Fly
+      - name: Deploy to Fly on push to main
+        run: flyctl deploy --remote-only --config fly.toml
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_IO_DEPLOY_TOKEN }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_MODEL_REPO: ${{ secrets.HUGGINGFACE_MODEL_REPO }}
-
-          name: Deploy to Fly on push to main
