@@ -1,0 +1,14 @@
+artifacts/
+.env
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.json
+*.h5
+*.pth
+*.joblib
