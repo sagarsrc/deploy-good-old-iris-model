@@ -76,6 +76,26 @@ sudo docker run -d -p 8000:8000 iris
 
 # deployment fly
 
+- API health check
+
 ```
-fly deploy
+curl -X GET "https://good-old-iris-model.fly.dev" \
+-H "Content-Type: application/json"
+
+{"message":"Hello good old iris model API ;)"}
+```
+
+- test curl request to deployed model on fly.io
+- endpoint: https://good-old-iris-model.fly.dev/predict
+
+```
+curl -X POST "https://good-old-iris-model.fly.dev/predict" \
+-H "Content-Type: application/json" \
+-d '{
+"sepal_length": 6.4,
+"sepal_width": 2.9,
+"petal_length": 4.3,
+"petal_width": 1.3
+}'
+
 ```

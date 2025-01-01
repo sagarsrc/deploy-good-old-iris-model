@@ -1,6 +1,12 @@
 artifacts/
 .env
 .venv
+
+
+local_artifacts/
+fetched_artifacts/
+
+
 __pycache__/
 *.pyc
 *.pyo
